@@ -1,0 +1,1 @@
+create this app folder to store rasa training data files and models
