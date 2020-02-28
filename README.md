@@ -156,6 +156,9 @@ docker-compose up -d
 ```
 
 Now you can test your new created chatbot on http://localhost:8100/ url
+<br><br><br>
+
+### Train NLU model using RASA server
 
 You can train your NLU model by editing training data file from **/app/ folder** 
 <br><br>
