@@ -1,4 +1,4 @@
-# Set up RASA chatbot using Rasa UI and webchat
+# Set up [RASA](https://rasa.com/) chatbot using [Rasa UI](https://github.com/paschmann/rasa-ui) and [webchat](https://github.com/botfront/rasa-webchat)
 
 **Youtube playlist** \
 [https://www.youtube.com/playlist?list=PL75e0qA87dlHQny7z43NduZHPo6qd-cRc](https://link)
@@ -39,16 +39,15 @@ then connect to rasa container using below command
 docker exec -it  <rasa container id> bash
 ```
 
-If you are upping docker container first time then there will not any file in **‘/app/’** folder for training data, 
-to create training data files you have to initialise new project, if already initialised then only training data file will create in **‘/app/’** folder
+If you are upping docker container first time then there will not any file in **‘/app/’** folder for training data, to create training data files you have to initialise new project, if already initialised then only training data file will create in **‘/app/’** folder
 
 ```bash
 rasa init --no-prompt
 ```
 
-**Note - above command will overwrite all training data file with existing files if there any**
+:warning: **Note - above command will overwrite all training data file with existing files if there any**
 
-below files will crate in **/app/** folder
+below files will crate in **/app/** folder and will Training an initial model
 
 <table>
     <tr>
@@ -110,3 +109,73 @@ below files will crate in **/app/** folder
         </td>
     </tr>
 </table>
+<br>
+To set newly trained model, you need to down docker-compose using below command
+
+```bash
+docker-compose down
+```
+
+
+<br>
+
+### Rasa Webchat
+Use [Rasa webchat](https://github.com/botfront/rasa-webchat) widget to connect with a chatbot 💬 platform. \
+Create index.html in **/html/** folder and paste below code on body tag.
+
+```html
+<div id="webchat"/>
+<script src="https://storage.googleapis.com/mrbot-cdn/webchat-latest.js"></script>
+// Or you can replace latest with a specific version
+<script>
+  WebChat.default.init({
+    selector: "#webchat",
+    initPayload: "/get_started",
+    customData: {"language": "en"},
+    socketUrl: "http://localhost:5500",
+    socketPath: "/socket.io/",
+    title: "Title",
+    subtitle: "Subtitle",
+  })
+</script>
+```
+
+To set backend connection between Rasa Webchat and Rasa server, below code in **/app/credentials.yml** file.
+
+```yml
+socketio:
+  user_message_evt: user_uttered
+  bot_message_evt: bot_uttered
+  session_persistence: true
+```
+
+Now again up docker-compose using below command
+
+```bash
+docker-compose up -d
+```
+
+Now you can test your new created chatbot on http://localhost:8100/ url
+
+You can train your NLU model by editing training data file from **/app/ folder** 
+<br><br>
+After updates in  stories and NLU data, connect to rasa server and run command to train model.
+
+```bash
+docker exec -it  <rasa container id> bash
+rasa train
+```
+
+This command will the trained model and save into the **/app/models/** directory.
+<br><br>
+Whenever you trained model, you have to down the docker containers and again have to up the docker containers using the below command to make active newly trained model in production.
+
+```bash
+docker-compose down
+```
+
+then
+
+```bash
+docker-compose up -d
+```
