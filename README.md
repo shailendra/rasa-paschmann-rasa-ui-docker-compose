@@ -39,7 +39,7 @@ then connect to rasa container using below command
 docker exec -it  <rasa container id> bash
 ```
 
-If you are upping docker container first time then there will not any file in **‘/app/’** folder for training data,
+If you are upping docker container first time then there will not any file in **‘/app/’** folder for training data, 
 to create training data files you have to initialise new project, if already initialised then only training data file will create in **‘/app/’** folder
 
 ```bash
@@ -68,7 +68,7 @@ below files will crate in **/app/** folder
         </td>
     </tr>
     <tr>
-        <td>config.yml ‘*’	
+        <td>config.yml ‘*’
         </td>
         <td>configuration of your NLU and Core models
         </td>
@@ -80,31 +80,31 @@ below files will crate in **/app/** folder
         </td>
     </tr>
     <tr>
-        <td>data/nlu.md ‘*’	
+        <td>data/nlu.md ‘*’
         </td>
         <td>your NLU training data
         </td>
     </tr>
     <tr>
-        <td>data/stories.md ‘*’	
+        <td>data/stories.md ‘*’
         </td>
         <td>your stories
         </td>
     </tr>
     <tr>
-        <td>domain.yml ‘*’	
+        <td>domain.yml ‘*’
         </td>
         <td>your assistant’s domain
         </td>
     </tr>
     <tr>
-        <td>endpoints.yml		
+        <td>endpoints.yml
         </td>
         <td>details for connecting to channels like fb messenger
         </td>
     </tr>
     <tr>
-        <td>models/&lt;timestamp&gt;.tar.gz	
+        <td>models/&lt;timestamp&gt;.tar.gz
         </td>
         <td>your initial model
         </td>
