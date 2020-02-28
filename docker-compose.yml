@@ -1,0 +1,37 @@
+version: '3.0'
+
+services:
+    rasa:
+        image: rasa/rasa:latest-full
+        container_name: rasa
+        networks: ['rasa-network']
+        ports:
+            - "5005:5005"
+        volumes:
+            - "./app:/app/"
+        command: "run -vv --enable-api --debug --cors '*'"
+
+    rasa_ui:       
+        image: paschmann/rasa-ui:latest
+        container_name: rasa_ui
+        networks: ['rasa-network']
+        volumes:
+            - ./rasa-ui/server/data/:/opt/rasaui/server/data/
+        ports:
+            - "5001:5001"
+        depends_on:
+            - "rasa"
+        environment:
+            rasa_endpoint: "http://rasa:5005"
+
+    webchat:
+        image: php:7.2.2-apache
+        container_name: rasa_web
+        volumes:
+            - ./html/:/var/www/html/    
+        ports:
+            - "8100:80"
+        stdin_open: true
+        tty: true
+
+networks: {rasa-network: {}}
