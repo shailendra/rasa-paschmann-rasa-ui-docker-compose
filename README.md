@@ -169,7 +169,7 @@ docker exec -it  <rasa container id> bash
 rasa train
 ```
 
-This command will the trained model and save into the **/app/models/** directory.
+This command will the trained model and save trained model into the **/app/models/** directory.
 <br><br>
 Whenever you trained model, you have to down the docker containers and again have to up the docker containers using the below command to make active newly trained model in production.
 
