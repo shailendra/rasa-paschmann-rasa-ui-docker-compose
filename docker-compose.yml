@@ -13,7 +13,7 @@ services:
 
     rasa_ui:       
         image: paschmann/rasa-ui:latest
-        container_name: rasa_ui
+        container_name: rasa_ui          
         networks: ['rasa-network']
         volumes:
             - ./rasa-ui/server/data/:/opt/rasaui/server/data/
@@ -23,6 +23,8 @@ services:
             - "rasa"
         environment:
             rasa_endpoint: "http://rasa:5005"
+            admin_username: "admin"
+            admin_password: "321"
 
     webchat:
         image: php:7.2.2-apache

@@ -184,3 +184,16 @@ then
 ```bash
 docker-compose up -d
 ```
+
+<br><br>
+
+### Train NLU model using [Rasa UI](https://github.com/paschmann/rasa-ui) server
+
+You can train NLU model using Rasa UI web application. for more detail about Rasa UI check below link \
+https://github.com/paschmann/rasa-ui
+
+You can connect Rasa UI web application on http://localhost:5001 \
+As per Rasa UI username is "admin" and password is "admin". but you can change this by edit environment variable from docker-compose.yml file. 
+Now as per docker-compose.yml file login details are below \
+username - admin \
+password - 321
