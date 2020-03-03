@@ -204,16 +204,18 @@ Use the below command to connect Rasa UI container
 docker exec -it <rasa_ui container id> sh
 ```
 
-Below are step to train NLU Model.
+Below are steps to train NLU Model.
 
 ### Create a New Bot  
-Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001). \
-Select tab "Bots" from left side panel, 
+Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001).
 ![example1](raw/dashboard.jpg)
-
-Click on right top (+) button to add a new bot.
+Select tab "Bots" from left side panel,
+<br><br>
 ![example1](raw/create-bot.jpg)
+Click on right top (+) button to add a new bot.
+<br><br>
 
+![example1](raw/bot-setting.png)
 Give name for bot \
 In **"Config"** field add pipeline and policies. I have keep below code in config for test
 
@@ -242,4 +244,3 @@ For more information about Pipeline and Policies check below links \
 [https://rasa.com/docs/rasa/core/policies/](https://rasa.com/docs/rasa/core/policies/)
 
 In **"Server Output Folder"** filed add path **/app/models/**.
-![example1](raw/bot-setting.png)
