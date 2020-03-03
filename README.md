@@ -196,6 +196,18 @@ You can connect Rasa UI web application on [http://localhost:5001](http://localh
 As per Rasa UI username is "admin" and password is "admin". but you can change this by editing environment variable from docker-compose.yml file. 
 Now as per docker-compose.yml file login details are below \
 **username - admin** \
-**password - 321** 
+**password - 321**
+
+Use the below command to connect Rasa UI container
+
+```language
+docker exec -it <rasa_ui container id> sh
+```
+
+Below are step to train NLU Model.
+
+**Create a New Bot** \
+Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001) and select tab "Bots" from left side panel, click on right top (+) button to add a new bot. \
+![example1](/shailendra/rasa-paschmann-rasa-ui-docker-compose/raw/master/raw/dashboard.jpg)
 
 
