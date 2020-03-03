@@ -3,17 +3,17 @@
 # Set up [RASA](https://rasa.com/) chatbot using [Rasa UI](https://github.com/paschmann/rasa-ui) and [webchat](https://github.com/botfront/rasa-webchat)
 
 **Youtube playlist** \
-[https://www.youtube.com/playlist?list=PL75e0qA87dlHQny7z43NduZHPo6qd-cRc](https://link)
+[https://www.youtube.com/playlist?list=PL75e0qA87dlHQny7z43NduZHPo6qd-cRc](https://www.youtube.com/playlist?list=PL75e0qA87dlHQny7z43NduZHPo6qd-cRc)
 
 **github link for RASA Master Class Demo** \
-[https://github.com/RasaHQ/rasa-masterclass](https://link)
+[https://github.com/RasaHQ/rasa-masterclass](https://github.com/RasaHQ/rasa-masterclass)
 
 **Installation of RASA** \
-[https://rasa.com/docs/rasa/user-guide/installation/](https://link)  
+[https://rasa.com/docs/rasa/user-guide/installation/](https://rasa.com/docs/rasa/user-guide/installation/)  
 please refer above URL for Installation of RASA, Python and other dependency
 
 # Setup Using Docker-Compose
-[https://rasa.com/docs/rasa/user-guide/running-rasa-with-docker/](https://link) \
+[https://rasa.com/docs/rasa/user-guide/running-rasa-with-docker/](https://rasa.com/docs/rasa/user-guide/running-rasa-with-docker/) \
 Install Docker and keep directory structure as below for docker compose.
 
 ```language
@@ -157,7 +157,7 @@ Now again up docker-compose using below command
 docker-compose up -d
 ```
 
-Now you can test your new created chatbot on http://localhost:8100/ url
+Now you can test your new created chatbot on [http://localhost:8100/](http://localhost:8100/) url
 <br><br><br>
 
 ### Train NLU model using RASA server
@@ -190,10 +190,12 @@ docker-compose up -d
 ### Train NLU model using [Rasa UI](https://github.com/paschmann/rasa-ui) server
 
 You can train NLU model using Rasa UI web application. for more detail about Rasa UI check below link \
-https://github.com/paschmann/rasa-ui
+[https://github.com/paschmann/rasa-ui](https://github.com/paschmann/rasa-ui)
 
-You can connect Rasa UI web application on http://localhost:5001 \
-As per Rasa UI username is "admin" and password is "admin". but you can change this by edit environment variable from docker-compose.yml file. 
+You can connect Rasa UI web application on [http://localhost:5001](http://localhost:5001) \
+As per Rasa UI username is "admin" and password is "admin". but you can change this by editing environment variable from docker-compose.yml file. 
 Now as per docker-compose.yml file login details are below \
-username - admin \
-password - 321
+**username - admin** \
+**password - 321** 
+
+
