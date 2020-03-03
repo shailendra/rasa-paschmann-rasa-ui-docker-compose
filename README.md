@@ -208,6 +208,11 @@ Below are step to train NLU Model.
 
 **Create a New Bot** \
 Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001) and select tab "Bots" from left side panel, click on right top (+) button to add a new bot. \
-![example1](/shailendra/rasa-paschmann-rasa-ui-docker-compose/raw/master/raw/dashboard.jpg)
+![example1](raw/dashboard.jpg) 
+
+![example1](raw/create-bot.jpg)
+
+![example1](raw/bot-setting.png)
+
 
 
