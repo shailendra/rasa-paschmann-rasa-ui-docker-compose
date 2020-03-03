@@ -121,7 +121,7 @@ docker-compose down
 
 <br>
 
-### Rasa Webchat
+## Rasa Webchat
 Use [Rasa webchat](https://github.com/botfront/rasa-webchat) widget to connect with a chatbot 💬 platform. \
 Create index.html in **/html/** folder and paste below code on body tag.
 
@@ -160,7 +160,7 @@ docker-compose up -d
 Now you can test your new created chatbot on [http://localhost:8100/](http://localhost:8100/) url
 <br><br><br>
 
-### Train NLU model using RASA server
+## Train NLU model using RASA server
 
 You can train your NLU model by editing training data file from **/app/ folder** 
 <br><br>
@@ -187,7 +187,7 @@ docker-compose up -d
 
 <br><br>
 
-### Train NLU model using [Rasa UI](https://github.com/paschmann/rasa-ui) server
+## Train NLU model using [Rasa UI](https://github.com/paschmann/rasa-ui) server
 
 You can train NLU model using Rasa UI web application. for more detail about Rasa UI check below link \
 [https://github.com/paschmann/rasa-ui](https://github.com/paschmann/rasa-ui)
@@ -206,7 +206,7 @@ docker exec -it <rasa_ui container id> sh
 
 Below are step to train NLU Model.
 
-**Create a New Bot** \
+### Create a New Bot  
 Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001). \
 Select tab "Bots" from left side panel, 
 ![example1](raw/dashboard.jpg)
@@ -243,8 +243,3 @@ For more information about Pipeline and Policies check below links \
 
 In **"Server Output Folder"** filed add path **/app/models/**.
 ![example1](raw/bot-setting.png)
-
-
-
-
-
