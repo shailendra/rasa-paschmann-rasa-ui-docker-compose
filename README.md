@@ -206,7 +206,7 @@ docker exec -it <rasa_ui container id> sh
 
 Below are steps to train NLU Model.
 
-### Create a New Bot  
+### Create a New Bot and Intents  
 Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001).
 ![example1](raw/dashboard.jpg)
 Select tab "Bots" from left side panel,
@@ -324,3 +324,57 @@ Using below data ceate more Intent following above step.
 - not very good
 - extremely sad
 - so sad
+
+<br><br><br>
+
+### Create responses/replies using Actions for intents/user inputs
+![Selet response tab](raw/response-tab-select.png)
+`1.` to create response for intent click on  **"Response"** from left side
+<br>
+2. Select **"rasa"** bot
+
+<br><br><br>
+
+### Write Your Stories using intents and responses
+Here, you will teach your assistant how to respond to your messages. Core models learn from real conversational data in the form of training “stories”. A story is a real conversation between a user and an assistant. Lines with intents and entities reflect the user’s input and action names show what the assistant should do in response.
+
+Below is an example of a simple conversation. The user says hello, and the assistant says hello back. This is how it looks as a story:
+
+**story1**
+```language
+## happy path
+* greet
+  - utter_greet
+* mood_great
+  - utter_happy
+```
+
+Below are steps to add story in RASA UI
+![select story tab](raw/select-story-tab.png)
+`1. `Select Story tab from left side.
+<br>
+`2. `Select "rasa" bot.
+
+<br>
+
+![click on plus button to add story](raw/create-story-plus.png)
+Click on plus (+) button to add story
+
+<br>
+
+![expand story arrow](raw/story-click-plus-button.png)
+Click on arrow button to write story.
+
+<br>
+
+![write story and save](raw/story-write-save.png)
+1. This is an example of a simple conversation. The user says hello for this write intent greet as "* greet", and the assistant says hello back for this write utter as "   - utter_greet". also write for mood_happy. story will look link below.
+```language
+## happy path
+* greet
+  - utter_greet
+* mood_great
+  - utter_happy
+``` 
+2. Then save the story.
+
