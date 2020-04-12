@@ -210,14 +210,18 @@ Below are steps to train NLU Model.
 Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001).
 ![example1](raw/dashboard.jpg)
 Select tab "Bots" from left side panel,
-<br><br>
+
+<br><br><br>
+
 ![example1](raw/create-bot.jpg)
 Click on right top (+) button to add a new bot.
-<br><br>
+
+<br><br><br>
+
 
 ![example1](raw/bot-setting.png)
 Give name for bot \
-In **"Config"** field add pipeline and policies. I have keep below code in config for test
+In **"Config"** field add pipeline and policies. keep below code in config
 
 ```yml
 # Configuration for Rasa NLU.
@@ -244,3 +248,79 @@ For more information about Pipeline and Policies check below links \
 [https://rasa.com/docs/rasa/core/policies/](https://rasa.com/docs/rasa/core/policies/)
 
 In **"Server Output Folder"** filed add path **/app/models/**.
+
+<br><br><br>
+
+ ![Select Bot](raw/select-bot.jpg)
+ Now select newly created Bot
+
+<br><br><br>
+
+![Create New Intent](raw/create-new-intent.jpg)
+Create Intents
+
+<br><br><br>
+
+![Save Intent](raw/save-intent.png)
+Give name for Intent. I have given "greet". Then Save it.
+
+<br><br><br>
+
+![Selet Intent to Edit](raw/intent-to-edit.jpg)
+Now Select newly created Intent "greet".
+
+<br><br><br>
+
+![Save edited Intent](raw/save-edited-intent.jpg)
+Enter an expression and press enter. I have entered below expression for **"greet"** intent.
+- hey
+- hello
+- hi
+- good morning
+- good evening
+- hey there
+
+Using below data ceate more Intent following above step. 
+
+*intent -* **goodbye**
+- bye
+- goodbye
+- see you around
+- see you later
+
+*intent -* **affirm**
+- yes
+- indeed
+- of course
+- that sounds good
+- correct
+
+*intent -* **deny**
+- no
+- never
+- I don't think so
+- don't like that
+- no way
+- not really
+
+*intent -* **mood_great**
+- perfect
+- very good
+- great
+- amazing
+- wonderful
+- I am feeling very good
+- I am great
+- I'm good
+
+*intent -* **mood_unhappy**
+- sad
+- very sad
+- unhappy
+- bad
+- very bad
+- awful
+- terrible
+- not very good
+- extremely sad
+- so sad
