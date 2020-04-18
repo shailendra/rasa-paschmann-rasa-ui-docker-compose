@@ -1,5 +1,3 @@
-## !! This project is a work in progress.
-
 # Set up [RASA](https://rasa.com/) chatbot using [Rasa UI](https://github.com/paschmann/rasa-ui) and [webchat](https://github.com/botfront/rasa-webchat)
 
 **Youtube playlist** \
@@ -49,7 +47,7 @@ rasa init --no-prompt
 
 :warning: **Note - above command will overwrite all training data file with existing files if there any**
 
-below files will crate in **/app/** folder and will Training an initial model
+below files will create in **/app/** folder and will Training an initial model
 
 <table>
     <tr>
@@ -121,7 +119,7 @@ docker-compose down
 
 <br>
 
-## Rasa Webchat
+# Rasa Webchat
 Use [Rasa webchat](https://github.com/botfront/rasa-webchat) widget to connect with a chatbot 💬 platform. \
 Create index.html in **/html/** folder and paste below code on body tag.
 
@@ -157,10 +155,10 @@ Now again up docker-compose using below command
 docker-compose up -d
 ```
 
-Now you can test your new created chatbot on [http://localhost:8100/](http://localhost:8100/) url
+Now you can test your newly created chatbot on [http://localhost:8100/](http://localhost:8100/) url
 <br><br><br>
 
-## Train NLU model using RASA server
+# Train NLU model using RASA server
 
 You can train your NLU model by editing training data file from **/app/ folder** 
 <br><br>
@@ -173,7 +171,7 @@ rasa train
 
 This command will the trained model and save trained model into the **/app/models/** directory.
 <br><br>
-Whenever you trained model, you have to down the docker containers and again have to up the docker containers using the below command to make active newly trained model in production.
+Whenever you train a model, you have to down the docker containers and again have to up the docker containers using the below command to make active newly trained model in production.
 
 ```bash
 docker-compose down
@@ -187,41 +185,44 @@ docker-compose up -d
 
 <br><br>
 
-## Train NLU model using [Rasa UI](https://github.com/paschmann/rasa-ui) server
+# Train NLU model using [Rasa UI](https://github.com/paschmann/rasa-ui) server
 
 You can train NLU model using Rasa UI web application. for more detail about Rasa UI check below link \
 [https://github.com/paschmann/rasa-ui](https://github.com/paschmann/rasa-ui)
 
 You can connect Rasa UI web application on [http://localhost:5001](http://localhost:5001) \
-As per Rasa UI username is "admin" and password is "admin". but you can change this by editing environment variable from docker-compose.yml file. 
+As per Rasa UI username is "admin" and password is "admin". but you can change these details by editing the environment variable in docker-compose.yml file. 
 Now as per docker-compose.yml file login details are below \
 **username - admin** \
 **password - 321**
 
-Use the below command to connect Rasa UI container
+below command are useful to connect and check logs of docker container 
 
 ```language
 docker exec -it <rasa_ui container id> sh
+docker logs --follow <rasa container id>
 ```
+
 
 Below are steps to train NLU Model.
 
 ### Create a New Bot and Intents  
 Connect Rasa UI web application on [http://localhost:5001](http://localhost:5001).
 ![example1](raw/dashboard.jpg)
-Select tab "Bots" from left side panel,
+Select "Bots" tab from left side panel,
 
-<br><br><br>
+<br>
 
 ![example1](raw/create-bot.jpg)
-Click on right top (+) button to add a new bot.
+Click on the (+) button from right top to add a new bot.
 
-<br><br><br>
+<br>
 
 
 ![example1](raw/bot-setting.png)
-Give name for bot \
-In **"Config"** field add pipeline and policies. keep below code in config
+1. Give a name for bot \
+2. In **"Server Output Folder"** filed add path **/app/models/**.
+3. In **"Config"** field add pipeline and policies. keep below code
 
 ```yml
 # Configuration for Rasa NLU.
@@ -247,17 +248,16 @@ For more information about Pipeline and Policies check below links \
 [https://rasa.com/docs/rasa/nlu/choosing-a-pipeline/](https://rasa.com/docs/rasa/nlu/choosing-a-pipeline/) \
 [https://rasa.com/docs/rasa/core/policies/](https://rasa.com/docs/rasa/core/policies/)
 
-In **"Server Output Folder"** filed add path **/app/models/**.
 
-<br><br><br>
+<br><br>
 
  ![Select Bot](raw/select-bot.jpg)
  Now select newly created Bot
 
-<br><br><br>
+<br><br>
 
 ![Create New Intent](raw/create-new-intent.jpg)
-Create Intents
+Click on the (+) button to create Intents
 
 <br><br><br>
 
@@ -266,13 +266,13 @@ Give name for Intent. I have given "greet". Then Save it.
 
 <br><br><br>
 
-![Selet Intent to Edit](raw/intent-to-edit.jpg)
-Now Select newly created Intent "greet".
+![Select Intent to Edit](raw/intent-to-edit.jpg)
+Now Select the newly created Intent "greet".
 
 <br><br><br>
 
 ![Save edited Intent](raw/save-edited-intent.jpg)
-Enter an expression and press enter. I have entered below expression for **"greet"** intent.
+Enter an expression and press enter. I have entered below expressions for **"greet"** intent.
 - hey
 - hello
 - hi
@@ -280,7 +280,7 @@ Enter an expression and press enter. I have entered below expression for **"gree
 - good evening
 - hey there
 
-Using below data ceate more Intent following above step. 
+Use the below data and create more Intent following the above steps. 
 
 *intent -* **goodbye**
 - bye
@@ -328,17 +328,74 @@ Using below data ceate more Intent following above step.
 <br><br><br>
 
 ### Create responses/replies using Actions for intents/user inputs
-![Selet response tab](raw/response-tab-select.png)
-`1.` to create response for intent click on  **"Response"** from left side
+we will create below responses for intents
+```language
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+```
+
+
+![Select response tab](raw/response-tab-select.png)
+1. to create response for intent click on  **"Response"** from left side
+2. Select **"rasa"** bot from dropdown
+
 <br>
-2. Select **"rasa"** bot
+
+![Select response tab](raw/response-click-on-action.png)
+click on the plus (+) button to add response
+
+<br>
+
+![Select response tab](raw/response-type.png)
+1. In the name field add the response name "greet". Always **"utter_"** before response/action name. So response/action name will be **"utter_greet"**.
+2. Click on the save button
+
+<br>
+
+![Select response tab](raw/response-add-text-plus.png)
+Now click on the (+) button to add response text
+
+<br>
+
+![Select response tab](raw/response-write-text-response.png)
+1.  Select "text" from dropdown.
+2. Enter the response text. I have added "Hey! How are you?"
+3. Click ![save](raw/response-tick-button.png) button to save.
+4. you can add more response text for one action.
+
+Add below responses using the above step.
+```language
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+```
 
 <br><br><br>
 
-### Write Your Stories using intents and responses
-Here, you will teach your assistant how to respond to your messages. Core models learn from real conversational data in the form of training “stories”. A story is a real conversation between a user and an assistant. Lines with intents and entities reflect the user’s input and action names show what the assistant should do in response.
+### Write Stories using intents and responses
+Here, you will teach your chatbot how to respond to your messages. Core models learn from real conversational data in the form of training “stories”. A story is a real conversation between a user and chatbot. Lines with intents and entities reflect the user’s input and action names show what the chatbot should do in response.
 
-Below is an example of a simple conversation. The user says hello, and the assistant says hello back. This is how it looks as a story:
+Below is an example of a simple conversation. The user says hello, and the chatbot says "Hey! How are you?". This is how it looks as a story:
 
 **story1**
 ```language
@@ -351,9 +408,8 @@ Below is an example of a simple conversation. The user says hello, and the assis
 
 Below are steps to add story in RASA UI
 ![select story tab](raw/select-story-tab.png)
-`1. `Select Story tab from left side.
-<br>
-`2. `Select "rasa" bot.
+1. Select the Story tab from the left side.
+2. Select "rasa" bot from dropdown.
 
 <br>
 
@@ -363,18 +419,81 @@ Click on plus (+) button to add story
 <br>
 
 ![expand story arrow](raw/story-click-plus-button.png)
-Click on arrow button to write story.
+Click on the arrow button to write the story.
 
 <br>
 
 ![write story and save](raw/story-write-save.png)
-1. This is an example of a simple conversation. The user says hello for this write intent greet as "* greet", and the assistant says hello back for this write utter as "   - utter_greet". also write for mood_happy. story will look link below.
+1. Type "greet" in search box
+2. from the dropdown click on "greet" intent. When you click on it, the "greet" intent will add in the story.
+3. Then click on "utter_greet" action from the dropdown. 
+
+Using the above steps add "mood_great" intent and "utter_happy" action. Now the story will look like below.
 ```language
 ## happy path
 * greet
   - utter_greet
 * mood_great
   - utter_happy
-``` 
-2. Then save the story.
+```
+4. This is one story. Click on the save button to save this story.
 
+Now add below stories using above steps
+```language
+## sad path 1
+* greet
+  - utter_greet
+* mood_unhappy
+  - utter_cheer_up
+  - utter_did_that_help
+* affirm
+  - utter_happy
+
+## sad path 2
+* greet
+  - utter_greet
+* mood_unhappy
+  - utter_cheer_up
+  - utter_did_that_help
+* deny
+  - utter_goodbye
+
+## say goodbye
+* goodbye
+  - utter_goodbye
+```
+
+<br><br><br>
+
+### Train a Model
+After any update in NLU or Core data, or update the domain or configuration, we need to train a model. Below are steps to Train a Model.
+
+![Train a Model](raw/training-select-model-tab.png)
+1. Select the "Training" tab from the left side.
+2. Select "rasa" bot from dropdown.
+3. add a comment. I have added "first training of model".
+4. Click on the "Start Training" button.
+
+Below message will display on the top side while training a model. It may take a few minutes to train a model depending on system configuration.
+![Train a Model](raw/training-message-running.png)
+
+After completed training below message will display
+![Train a Model](raw/training-message-completed.png)
+
+<br><br><br>
+
+### Update/Activate a Model
+Below are the steps to update/activate a model.
+![Train a Model](raw/update-model.png)
+1. Select the "Models" tab from the left side.
+2. Select "rasa" bot from dropdown.
+3. You can see your trained model in the Model table and comment in the comment column.
+4. Click on ![Train a Model](raw/update-activate-button.png) button to update/active model.
+
+ It may take a few minutes to update/activate a model depending on system configuration. while the updating model loading message will display on the top side.
+ ![Train a Model](raw/update-message-loading.png)
+ 
+ After the updated/activated model below message will display.
+ ![Train a Model](raw/update-message-loaded.png)
+
+ Now you can test your newly activated model in chatbot on [http://localhost:8100/](http://localhost:8100/) url
